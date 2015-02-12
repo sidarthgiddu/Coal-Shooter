@@ -45,7 +45,7 @@ window.onload = function()
      *
      */
     queue.loadManifest([
-        {id: 'backgroundImage', src: 'https://dl.dropboxusercontent.com/u/72727401/Web/ECC/assets/background.png'},
+        {id: 'backgroundImage', src: 'https://dl.dropboxusercontent.com/u/72727401/Web/ECC/assets/mars_grayscale_background.jpg'},
         {id: 'crossHair', src: 'https://dl.dropboxusercontent.com/u/72727401/Web/ECC/assets/crosshair.png'},
         {id: 'shot', src: 'https://dl.dropboxusercontent.com/u/72727401/Web/ECC/assets/shot.mp3'},
         {id: 'background', src: 'https://dl.dropboxusercontent.com/u/72727401/Web/ECC/assets/countryside.mp3'},
