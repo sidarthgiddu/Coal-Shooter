@@ -25,7 +25,7 @@ window.onload = function()
      *      Set up the Canvas with Size and height
      *
      */
-    var canvas = document.getElementById('myCanvas');
+    var canvas = document.getElementById('myCanvas'); //gets canvas
     context = canvas.getContext('2d'); //working in a 2d context, the getcontext method returns methods and properties needed to draw on the canvas
     context.canvas.width = WIDTH; //sets the canvas width to our predetermined width
     context.canvas.height = HEIGHT; //sets the canvas height to our predetermined height
@@ -35,10 +35,10 @@ window.onload = function()
      *      Set up the Asset Queue and load sounds
      *
      */
-    queue = new createjs.LoadQueue(false);
-    queue.installPlugin(createjs.Sound);
-    queue.on("complete", queueLoaded, this);
-    createjs.Sound.alternateExtensions = ["ogg"];
+    queue = new createjs.LoadQueue(false); //the queues are part of a local site, so they don't need to be loaded
+    queue.installPlugin(createjs.Sound); //install sound plugin on the queue
+    queue.on("complete", queueLoaded, this); // runs the defined queue loaded function when the queue is complete
+    createjs.Sound.alternateExtensions = ["ogg"]; //if the browser cannot play the mp3 files, it will play the alternate ogg file
 
     /*
      *      Create a load manifest for all assets
@@ -61,7 +61,7 @@ window.onload = function()
      *      Create a timer that updates once per second
      *
      */
-    gameTimer = setInterval(updateTime, 1000); //initializes gameTimer to how much time has passed in the game
+    gameTimer = setInterval(updateTime, 1000); //initializes gameTimer each second, using update time function, to how much time has passed in the game
 
 }
 
