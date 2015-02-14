@@ -88,16 +88,16 @@ function queueLoaded(event)
 
     // Create bat spritesheet
     spriteSheet = new createjs.SpriteSheet({
-        "images": [queue.getResult('batSpritesheet')],
-        "frames": {"width": 198, "height": 117},
-        "animations": { "flap": [0,4] }
+        "images": [queue.getResult('batSpritesheet')], //queue loads the bat spritesheet
+        "frames": {"width": 198, "height": 117}, //gives the width and height of each sprite in the sprite sheet
+        "animations": { "flap": [0,4] } //animations will be called "flap", go from spirte 0 to sprite 4
     });
 
     // Create bat death spritesheet
     batDeathSpriteSheet = new createjs.SpriteSheet({
-    	"images": [queue.getResult('batDeath')],
-    	"frames": {"width": 198, "height" : 148},
-    	"animations": {"die": [0,7, false,1 ] }
+    	"images": [queue.getResult('batDeath')], //queue loads bat death spritesheet
+    	"frames": {"width": 198, "height" : 148}, //gives the width and height of each sprite in the sprite sheet
+    	"animations": {"die": [0,7, false,1 ] } //animations will be called "die", false: don't want it to repeat it, and we only want to play it once
     });
 
     // Create bat sprite
