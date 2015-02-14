@@ -101,11 +101,11 @@ function queueLoaded(event)
     });
 
     // Create bat sprite
-    createEnemy();
+    createEnemy(); //calls the createEnemy function defined below
 
     // Create crosshair
-    crossHair = new createjs.Bitmap(queue.getResult("crossHair"));
-    stage.addChild(crossHair);
+    crossHair = new createjs.Bitmap(queue.getResult("crossHair")); //creates bitmap of crosshair
+    stage.addChild(crossHair); //adds crosshair
 
     // Add ticker
     createjs.Ticker.setFPS(15);
@@ -119,13 +119,13 @@ function queueLoaded(event)
 
 function createEnemy()
 {
-	animation = new createjs.Sprite(spriteSheet, "flap");
-    animation.regX = 99;
-    animation.regY = 58;
-    animation.x = enemyXPos;
-    animation.y = enemyYPos;
-    animation.gotoAndPlay("flap");
-    stage.addChildAt(animation,1);
+    animation = new createjs.Sprite(spriteSheet, "flap"); //creates the bat sprite object out of the sprite sheet
+    animation.regX = 99; //set registration point x
+    animation.regY = 58; //set registration point y
+    animation.x = enemyXPos; //sets position based on this global variable
+    animation.y = enemyYPos; //sets position based on this global variable
+    animation.gotoAndPlay("flap"); //plays the flap animation
+    stage.addChildAt(animation,1); //add the animation behind the crosshair (which is the significance of 1)
 }
 
 function batDeath()
