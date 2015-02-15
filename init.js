@@ -142,7 +142,7 @@ function batDeath()
 function tickEvent()
 {
 	//Make sure enemy bat is within game boundaries and move enemy Bat
-	if(enemyXPos < WIDTH && enemyXPos > 0)
+	if(enemyXPos < WIDTH && enemyXPos > 0) //makes sure that the bat's position is inside the game
 	{
 		enemyXPos += enemyXSpeed;
 	} else 
@@ -159,8 +159,8 @@ function tickEvent()
 		enemyYPos += enemyYSpeed;
 	}
 
-	animation.x = enemyXPos;
-	animation.y = enemyYPos;
+	animation.x = enemyXPos; //move the bats by adjusting the x position of the animation
+	animation.y = enemyYPos; //move the bats by adjusting the y position of the animation
 
 	
 }
@@ -209,7 +209,7 @@ function handleMouseDown(event)
 
     	//Create new enemy
     	var timeToCreate = Math.floor((Math.random()*3500)+1);
-	    setTimeout(createEnemy,timeToCreate);
+	    setTimeout(createEnemy,timeToCreate); //execute after the given time
 
     } else
     {
