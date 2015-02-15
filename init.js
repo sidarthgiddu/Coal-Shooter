@@ -45,15 +45,15 @@ window.onload = function()
      *
      */
     queue.loadManifest([
-        {id: 'backgroundImage', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/background.png'},
-        {id: 'crossHair', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/crosshair.png'},
-        {id: 'shot', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/shot.mp3'},
-        {id: 'background', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/countryside.mp3'},
-        {id: 'gameOverSound', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/gameOver.mp3'},
-        {id: 'tick', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/tick.mp3'},
-        {id: 'deathSound', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/die.mp3'},
-        {id: 'batSpritesheet', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/batSpritesheet.png'},
-        {id: 'batDeath', src: 'https://drive.google.com/drive/#folders/0B0rxmdzaKfZNfnUzY1FoUVFKV0hFXzg3NEx1VXljRVZmM19Qb2RnOWVSUjltd1NHOVo4TFE/0B0rxmdzaKfZNfm9Yczk0SS1IMUt5MmlxcXdHeXY4R1g2T3NyTHdtX1RFcXh3Nk9PMm8xSkU/batDeath.png'},
+        {id: 'backgroundImage', src: 'assets/background.png'},
+        {id: 'crossHair', src: 'assets/crosshair.png'},
+        {id: 'shot', src: 'assets/shot.mp3'},
+        {id: 'background', src: 'assets/countryside.mp3'},
+        {id: 'gameOverSound', src: 'assets/gameOver.mp3'},
+        {id: 'tick', src: 'assets/tick.mp3'},
+        {id: 'deathSound', src: 'assets/die.mp3'},
+        {id: 'batSpritesheet', src: 'assets/batSpritesheet.png'},
+        {id: 'batDeath', src: 'assets/batDeath.png'},
     ]);
     queue.load();
 
