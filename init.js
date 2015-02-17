@@ -45,15 +45,33 @@ window.onload = function()
      *
      */
     queue.loadManifest([
-        {id: 'backgroundImage', src: 'assets/background.png'},
-        {id: 'crossHair', src: 'assets/crosshair.png'},
-        {id: 'shot', src: 'assets/shot.mp3'},
-        {id: 'background', src: 'assets/countryside.mp3'},
-        {id: 'gameOverSound', src: 'assets/gameOver.mp3'},
-        {id: 'tick', src: 'assets/tick.mp3'},
-        {id: 'deathSound', src: 'assets/die.mp3'},
-        {id: 'batSpritesheet', src: 'assets/batSpritesheet.png'},
-        {id: 'batDeath', src: 'assets/batDeath.png'},
+        {
+        	id: 'backgroundImage', 
+        	src: 'assets/background.png'},
+        {
+        	id: 'crossHair', 
+        	src: 'assets/crosshair.png'},
+        {
+        	id: 'shot', 
+        	src: 'assets/shot.mp3'},
+        {
+        	id: 'background', 
+        	src: 'assets/countryside.mp3'},
+        {
+        	id: 'gameOverSound', 
+        	src: 'assets/gameOver.mp3'},
+        {
+        	id: 'tick', 
+        	src: 'assets/tick.mp3'},
+        {
+        	id: 'deathSound', 
+        	src: 'assets/die.mp3'},
+        {
+        	id: 'batSpritesheet', 
+        	src: 'assets/batSpritesheet.png'},
+        {
+        	id: 'batDeath', src: 
+        	'assets/batDeath.png'},
     ]);
     queue.load();
 
