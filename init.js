@@ -47,7 +47,7 @@ window.onload = function()
     queue.loadManifest([
         {
         	id: 'backgroundImage', 
-        	src: 'assets/background.png'},
+        	src: 'assets/mars_grayscale_background.jpg'},
         {
         	id: 'crossHair', 
         	src: 'assets/crosshair.png'},
