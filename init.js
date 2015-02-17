@@ -25,7 +25,7 @@ window.onload = function()
      *      Set up the Canvas with Size and height
      *
      */
-    var canvas = document.getElementById('myCanvas');
+    var canvas = document.getElementById('myCanvas'); //gets canvas
     context = canvas.getContext('2d'); //working in a 2d context, the getcontext method returns methods and properties needed to draw on the canvas
     context.canvas.width = WIDTH; //sets the canvas width to our predetermined width
     context.canvas.height = HEIGHT; //sets the canvas height to our predetermined height
@@ -35,10 +35,10 @@ window.onload = function()
      *      Set up the Asset Queue and load sounds
      *
      */
-    queue = new createjs.LoadQueue(false);
-    queue.installPlugin(createjs.Sound);
-    queue.on("complete", queueLoaded, this);
-    createjs.Sound.alternateExtensions = ["ogg"];
+    queue = new createjs.LoadQueue(false); //the queues are part of a local site, so they don't need to be loaded
+    queue.installPlugin(createjs.Sound); //install sound plugin on the queue
+    queue.on("complete", queueLoaded, this); // runs the defined queue loaded function when the queue is complete
+    createjs.Sound.alternateExtensions = ["ogg"]; //if the browser cannot play the mp3 files, it will play the alternate ogg file
 
     /*
      *      Create a load manifest for all assets
@@ -61,7 +61,7 @@ window.onload = function()
      *      Create a timer that updates once per second
      *
      */
-    gameTimer = setInterval(updateTime, 1000); //initializes gameTimer to how much time has passed in the game
+    gameTimer = setInterval(updateTime, 1000); //initializes gameTimer each second, using update time function, to how much time has passed in the game
 
 }
 
@@ -88,24 +88,24 @@ function queueLoaded(event)
 
     // Create bat spritesheet
     spriteSheet = new createjs.SpriteSheet({
-        "images": [queue.getResult('batSpritesheet')],
-        "frames": {"width": 198, "height": 117},
-        "animations": { "flap": [0,4] }
+        "images": [queue.getResult('batSpritesheet')], //queue loads the bat spritesheet
+        "frames": {"width": 198, "height": 117}, //gives the width and height of each sprite in the sprite sheet
+        "animations": { "flap": [0,4] } //animations will be called "flap", go from spirte 0 to sprite 4
     });
 
     // Create bat death spritesheet
     batDeathSpriteSheet = new createjs.SpriteSheet({
-    	"images": [queue.getResult('batDeath')],
-    	"frames": {"width": 198, "height" : 148},
-    	"animations": {"die": [0,7, false,1 ] }
+    	"images": [queue.getResult('batDeath')], //queue loads bat death spritesheet
+    	"frames": {"width": 198, "height" : 148}, //gives the width and height of each sprite in the sprite sheet
+    	"animations": {"die": [0,7, false,1 ] } //animations will be called "die", false: don't want it to repeat it, and we only want to play it once
     });
 
     // Create bat sprite
-    createEnemy();
+    createEnemy(); //calls the createEnemy function defined below
 
     // Create crosshair
-    crossHair = new createjs.Bitmap(queue.getResult("crossHair"));
-    stage.addChild(crossHair);
+    crossHair = new createjs.Bitmap(queue.getResult("crossHair")); //creates bitmap of crosshair
+    stage.addChild(crossHair); //adds crosshair
 
     // Add ticker
     createjs.Ticker.setFPS(15);
@@ -119,13 +119,13 @@ function queueLoaded(event)
 
 function createEnemy()
 {
-	animation = new createjs.Sprite(spriteSheet, "flap");
-    animation.regX = 99;
-    animation.regY = 58;
-    animation.x = enemyXPos;
-    animation.y = enemyYPos;
-    animation.gotoAndPlay("flap");
-    stage.addChildAt(animation,1);
+    animation = new createjs.Sprite(spriteSheet, "flap"); //creates the bat sprite object out of the sprite sheet
+    animation.regX = 99; //set registration point x
+    animation.regY = 58; //set registration point y
+    animation.x = enemyXPos; //sets position based on this global variable
+    animation.y = enemyYPos; //sets position based on this global variable
+    animation.gotoAndPlay("flap"); //plays the flap animation
+    stage.addChildAt(animation,1); //add the animation behind the crosshair (which is the significance of 1)
 }
 
 function batDeath()
@@ -142,7 +142,7 @@ function batDeath()
 function tickEvent()
 {
 	//Make sure enemy bat is within game boundaries and move enemy Bat
-	if(enemyXPos < WIDTH && enemyXPos > 0)
+	if(enemyXPos < WIDTH && enemyXPos > 0) //makes sure that the bat's position is inside the game
 	{
 		enemyXPos += enemyXSpeed;
 	} else 
@@ -159,8 +159,8 @@ function tickEvent()
 		enemyYPos += enemyYSpeed;
 	}
 
-	animation.x = enemyXPos;
-	animation.y = enemyYPos;
+	animation.x = enemyXPos; //move the bats by adjusting the x position of the animation
+	animation.y = enemyYPos; //move the bats by adjusting the y position of the animation
 
 	
 }
@@ -209,7 +209,7 @@ function handleMouseDown(event)
 
     	//Create new enemy
     	var timeToCreate = Math.floor((Math.random()*3500)+1);
-	    setTimeout(createEnemy,timeToCreate);
+	    setTimeout(createEnemy,timeToCreate); //execute after the given time
 
     } else
     {
