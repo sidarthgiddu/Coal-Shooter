@@ -217,6 +217,7 @@ function handleMouseDown(event)
     var distX = Math.abs(shotX - spriteX);
     var distY = Math.abs(shotY - spriteY);
 	
+	console.log(animation._animation.name);
     // Anywhere in the body or head is a hit - but not the wings
     if(distX < 30 && distY < 59 && animation.currentAnimation === "flap")
     {
