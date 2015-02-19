@@ -216,10 +216,12 @@ function handleMouseDown(event)
     // Compute the X and Y distance using absolte value
     var distX = Math.abs(shotX - spriteX);
     var distY = Math.abs(shotY - spriteY);
-
+	
+	console.log(animation.id);
     // Anywhere in the body or head is a hit - but not the wings
-    if(distX < 30 && distY < 59 )
+    if(distX < 30 && distY < 59 && animation.id === "flap")
     {
+    	
     	//Hit
     	stage.removeChild(animation);
     	batDeath();
