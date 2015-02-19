@@ -228,8 +228,8 @@ function handleMouseDown(event)
     	createjs.Sound.play("deathSound");
     	
         //Make it harder next time
-    	enemyYSpeed *= 1.25;
-    	enemyXSpeed *= 1.3;
+    	//enemyYSpeed *= 1.25;
+    	//enemyXSpeed *= 1.3;
 
     	//Create new enemy
     	var timeToCreate = Math.floor((Math.random()*3500)+1);
