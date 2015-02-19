@@ -147,6 +147,7 @@ function createEnemy()
     animation.x = enemyXPos; //sets position based on this global variable
     animation.y = enemyYPos; //sets position based on this global variable
     animation.gotoAndPlay("flap"); //plays the flap animation
+    animation.canBeShot = true;
     stage.addChildAt(animation,1); //add the animation behind the crosshair (which is the significance of 1)
 }
 
@@ -219,12 +220,13 @@ function handleMouseDown(event)
 	
 	console.log(animation);
     // Anywhere in the body or head is a hit - but not the wings
-    if(distX < 30 && distY < 59 && animation.spriteSheet === spriteSheet)
+    if(distX < 30 && distY < 59 && animation.canBeShot)
     {
     	
     	//Hit
     	stage.removeChild(animation);
     	batDeath();
+    	animation.canBeShot = false;
     	score += 100;
     	scoreText.text = "1UP: " + score.toString();
     	createjs.Sound.play("deathSound");
