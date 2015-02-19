@@ -19,7 +19,7 @@ var gameTimer;
 var gameTime = 0;
 var timerText;
 
-Math.prototype.sign = function(n){
+function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
 } 
 
@@ -204,8 +204,8 @@ function handleMouseDown(event)
     createjs.Sound.play("shot");
 
     //Increase speed of enemy slightly
-    enemyXSpeed = Math.min(20, 1.05 * Math.abs(enemyXSpeed)) * Math.sign(enemyXSpeed);
-    enemyYSpeed = Math.min(20, 1.05 * Math.abs(enemyYSpeed)) * Math.sign(enemyYSpeed);
+    enemyXSpeed = Math.min(20, 1.05 * Math.abs(enemyXSpeed)) * sign(enemyXSpeed);
+    enemyYSpeed = Math.min(20, 1.05 * Math.abs(enemyYSpeed)) * sign(enemyYSpeed);
 
     //Obtain Shot position
     var shotX = Math.round(event.clientX);
