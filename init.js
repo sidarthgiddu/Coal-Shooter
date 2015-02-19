@@ -19,6 +19,10 @@ var gameTimer;
 var gameTime = 0;
 var timerText;
 
+Math.prototype.sign = function(n){
+	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
+} 
+
 window.onload = function()
 {
     /*
