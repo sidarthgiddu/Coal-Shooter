@@ -241,7 +241,7 @@ function handleMouseDown(event)
 function updateTime()
 {
 	gameTime += 1;
-	if(gameTime > 60)
+	if(gameTime > 60 && 0)
 	{
 		//End Game and Clean up
 		timerText.text = "GAME OVER";
