@@ -160,7 +160,7 @@ function batDeath()
 function tickEvent()
 {
 	//Make sure enemy bat is within game boundaries and move enemy Bat
-	if(enemyXSpeed < 10){
+	
 	if(enemyXPos < WIDTH && enemyXPos > 0) //makes sure that the bat's position is inside the game
 	{
 		enemyXPos += enemyXSpeed;
@@ -177,7 +177,7 @@ function tickEvent()
 		enemyYSpeed = enemyYSpeed * (-1);
 		enemyYPos += enemyYSpeed;
 	}
-	}
+	
 
 	animation.x = enemyXPos; //move the bats by adjusting the x position of the animation
 	animation.y = enemyYPos; //move the bats by adjusting the y position of the animation
