@@ -200,8 +200,7 @@ function handleMouseMove(event)
 
 function handleMouseDown(event)
 {
-    if (score <= 0)
-    	return;
+    
     
    //Play Gunshot sound
     createjs.Sound.play("shot");
@@ -242,7 +241,7 @@ function handleMouseDown(event)
     }
     
     //Miss
-    score -= 10;
+    //score -= 10;
     scoreText.text = "Score: " + score.toString();
 
     
