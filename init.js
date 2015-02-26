@@ -13,7 +13,7 @@ var enemyXPos=100;
 var enemyYPos=100;
 var enemyXSpeed = 1.5;
 var enemyYSpeed = 1.75;
-var score = 0;
+var score = 100;
 var scoreText;
 var gameTimer;
 var gameTime = 0;
