@@ -94,7 +94,7 @@ function queueLoaded(event)
     stage.addChild(backgroundImage); //displays the background image
 
     //Add Score
-    scoreText = new createjs.Text("1UP: " + score.toString(), "36px Arial", "#FFF"); //displays the text in string format
+    scoreText = new createjs.Text("Score: " + score.toString(), "36px Arial", "#FFF"); //displays the text in string format
     scoreText.x = 10; //sets position of the score text: 10 on the x-axis
     scoreText.y = 10; //sets position of the score text: 10 on the y-axis
     stage.addChild(scoreText);
@@ -229,7 +229,6 @@ function handleMouseDown(event)
     	batDeath();
     	animation.canBeShot = false;
     	score += 100;
-    	scoreText.text = "1UP: " + score.toString();
     	createjs.Sound.play("deathSound");
     	
         //Make it harder next time
@@ -240,13 +239,13 @@ function handleMouseDown(event)
     	var timeToCreate = Math.floor((Math.random()*3500)+1);
 	    setTimeout(createEnemy,timeToCreate); //execute after the given time
 
-    } else
-    {
-    	//Miss
-    	score -= 10;
-    	scoreText.text = "Score: " + score.toString();
-
     }
+    
+    //Miss
+    score -= 10;
+    scoreText.text = "Score: " + score.toString();
+
+    
 }
 
 function updateTime()
