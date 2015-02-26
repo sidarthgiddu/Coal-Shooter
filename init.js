@@ -18,7 +18,7 @@ var scoreText;
 var gameTimer;
 var gameTime = 0;
 var timerText;
-var numBatsKilled = 0;
+var numCoalsDestroyed = 0;
 
 function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
@@ -230,10 +230,13 @@ function handleMouseDown(event)
     	animation.canBeShot = false;
     	score += 100;
     	createjs.Sound.play("deathSound");
+    	numCoalsDestroyed++;
     	
         //Make it harder next time
-    	//enemyYSpeed *= 1.25;
-    	//enemyXSpeed *= 1.3;
+        if(numCoalsDestroyed % 3 === 0){
+	    	enemyYSpeed *= 1.25;
+	    	enemyXSpeed *= 1.3;
+        }
 
     	//Create new enemy
     	var timeToCreate = Math.floor((Math.random()*3500)+1);
