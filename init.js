@@ -18,6 +18,7 @@ var scoreText;
 var gameTimer;
 var gameTime = 0;
 var timerText;
+var numBatsKilled = 0;
 
 function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
