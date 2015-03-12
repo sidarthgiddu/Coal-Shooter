@@ -15,6 +15,7 @@ var enemyXSpeed = 1.5;
 var enemyYSpeed = 1.75;
 var score = 100;
 var scoreText;
+var levelUpText;
 var gameTimer;
 var gameTime = 0;
 var timerText;
@@ -105,7 +106,12 @@ function queueLoaded(event)
     timerText.x = 800; //sets position of the timer text: 800 on the x-axis
     timerText.y = 10; //sets position of the timer text: 10 on the y-axis
     stage.addChild(timerText);
-
+    
+    levelUpText = new createjs.Text("", "36px Arial", "#FFF");
+    levelUpText.x = 400 - 20;
+    levelUpText.y = 200;
+    stage.addChild(levelUpText);
+    
     // Play background sound
     createjs.Sound.play("background", {loop: -1}); //plays and loops the background sound indefinitely
 
@@ -236,6 +242,10 @@ function handleMouseDown(event)
         if(numCoalsDestroyed % 3 === 0){
 	    	enemyYSpeed *= 1.25;
 	    	enemyXSpeed *= 1.3;
+	    	levelUpText.text = "Level Up!";
+	    	setTimeout(function(){
+	    		levelUpText.text = "";
+	    	}, 500);
         }
 
     	//Create new enemy
