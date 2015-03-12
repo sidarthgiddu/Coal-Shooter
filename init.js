@@ -108,7 +108,7 @@ function queueLoaded(event)
     stage.addChild(timerText);
     
     levelUpText = new createjs.Text("", "36px Arial", "#FFF");
-    levelUpText.x = 400 - 20;
+    levelUpText.x = 400;
     levelUpText.y = 200;
     stage.addChild(levelUpText);
     
