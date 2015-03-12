@@ -139,7 +139,7 @@ function queueLoaded(event)
     stage.addChild(crossHair); //adds crosshair
 
     // Add ticker
-    createjs.Ticker.setFPS(15);
+    createjs.Ticker.setFPS(30);
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', tickEvent);
 
@@ -215,8 +215,8 @@ function handleMouseDown(event)
     createjs.Sound.play("shot");
 
     //Increase speed of enemy slightly
-    enemyXSpeed = Math.min(20, 1.05 * Math.abs(enemyXSpeed)) * sign(enemyXSpeed);
-    enemyYSpeed = Math.min(20, 1.05 * Math.abs(enemyYSpeed)) * sign(enemyYSpeed);
+    enemyXSpeed = 1.05 * enemyXSpeed;
+    enemyYSpeed = 1.05 * enemyYSpeed;
 
     //Obtain Shot position
     var shotX = Math.round(event.clientX);
