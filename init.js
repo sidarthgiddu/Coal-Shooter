@@ -94,20 +94,22 @@ function queueLoaded(event)
     // Add background image
     var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")) //creates the background image
     stage.addChild(backgroundImage); //displays the background image
-
+    
+    var font = "48px Helvetica";
+    
     //Add Score
-    scoreText = new createjs.Text("Score: " + score.toString(), "36px Arial", "#FFF"); //displays the text in string format
+    scoreText = new createjs.Text("Score: " + score.toString(), font, "#FFF"); //displays the text in string format
     scoreText.x = 10; //sets position of the score text: 10 on the x-axis
     scoreText.y = 10; //sets position of the score text: 10 on the y-axis
     stage.addChild(scoreText);
 
     //Ad Timer
-    timerText = new createjs.Text("Time: " + gameTime.toString(), "36px Arial", "#FFF"); //displays the time in string format
+    timerText = new createjs.Text("Time: " + gameTime.toString(), font, "#FFF"); //displays the time in string format
     timerText.x = 800; //sets position of the timer text: 800 on the x-axis
     timerText.y = 10; //sets position of the timer text: 10 on the y-axis
     stage.addChild(timerText);
     
-    levelUpText = new createjs.Text("", "36px Arial", "#FFF");
+    levelUpText = new createjs.Text("", font, "#FFF");
     levelUpText.x = 400;
     levelUpText.y = 200;
     stage.addChild(levelUpText);
