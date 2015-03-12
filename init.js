@@ -242,8 +242,8 @@ function handleMouseDown(event)
     	
         //Make it harder next time
         if(numCoalsDestroyed % 3 === 0){
-	    	enemyYSpeed *= 1.25;
-	    	enemyXSpeed *= 1.3;
+	    	enemyYSpeed *= 5;
+	    	enemyXSpeed *= 5;
 	    	levelUpText.text = "Level Up!";
 	    	setTimeout(function(){
 	    		levelUpText.text = "";
