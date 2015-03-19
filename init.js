@@ -38,6 +38,7 @@ function askQuestion(callback) {
 	createjs.Ticker.setPaused(true);
 	
 	document.getElementById("form").style.visibility = "visible";
+	document.getElementById("answers").style.visibility = "visible";
 	document.getElementById("question").innerHTML = curr.question;
 	
 	document.getElementById("q-0").innerHTML = curr.answers[0];
@@ -52,7 +53,6 @@ function askQuestion(callback) {
 		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!");
 		
 		setTimeout(function() {
-			document.getElementById("answers").style.visibility = undefined;
 			document.getElementById("form").style.visibility = "hidden";
 			
 			if (isCorrect){
