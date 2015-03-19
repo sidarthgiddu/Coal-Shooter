@@ -21,6 +21,54 @@ var gameTime = 0;
 var timerText;
 var numCoalsDestroyed = 0;
 
+var questions_left = questions;
+var questionSubmit;
+
+function askQuestion() {
+	var index = Math.floor(Math.random() * questions_left.length):
+	
+	var curr = questions_left[index];
+	
+	var q = questions_left;
+	questions_left = [];
+	for (var i = 0; i < q.length; i++)
+		if (i !== index)
+			questions_left.push(q[i]);
+	
+	createjs.Ticker.setPaused(true);
+	
+	document.getElementById("form").style.visibility = "visible";
+	document.getElementById("question").innerHTML = curr.question;
+	
+	document.getElementById("q-0").innerHTML = curr.answers[0];
+	document.getElementById("q-1").innerHTML = curr.answers[1];
+	document.getElementById("q-2").innerHTML = curr.answers[2];
+	document.getElementById("q-3").innerHTML = curr.answers[3];
+	
+	questionSubmit = function(ind) {
+		document.getElementById("answers").style.visibility = "hidden";
+		var isCorrect = ind === curr.correct;
+		
+		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!");
+		
+		setTimeout(function() {
+			document.getElementById("answers").style.visibility = "visible";
+			document.getElementById("form").style.visibility = "hidden";
+			
+			if (isCorrect)
+				createjs.Ticker.setPaused(false);
+			else { //Do Death
+				cleanup();
+			}
+			
+		}, 1000);
+		
+		questionSubmit = undefined;
+	}
+	setTimeout(function(){questionSubmit(-1)}, 20000);
+	
+}
+
 function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
 } 
@@ -263,17 +311,22 @@ function handleMouseDown(event)
     
 }
 
+function cleanup() {
+	//End Game and Clean up
+	timerText.text = "GAME OVER";
+	stage.removeChild(animation);
+	stage.removeChild(crossHair);
+	var si =createjs.Sound.play("gameOverSound");
+	clearInterval(gameTimer);	
+}
+
 function updateTime()
 {
+	
 	gameTime += 1;
 	if(gameTime > 60 && 0)
 	{
-		//End Game and Clean up
-		timerText.text = "GAME OVER";
-		stage.removeChild(animation);
-		stage.removeChild(crossHair);
-		var si =createjs.Sound.play("gameOverSound");
-		clearInterval(gameTimer);
+		cleanup();
 	}
 	else
 	{
