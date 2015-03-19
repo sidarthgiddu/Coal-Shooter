@@ -4,6 +4,31 @@
         <title>30 Minute Game 2</title>
         <link href="normalize.css" type="text/css" rel="stylesheet" />
         <link href="game.css" type="text/css" rel="stylesheet" />
+        <script>
+            var questions = [
+                {
+                    question: "Car?",
+                    answers: [
+                        "No",
+                        "Electric",
+                        "Planes FTW",
+                        "Trucks"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Test",
+                    answers: [
+                        "No",
+                        "No",
+                        "Yes",
+                        "No"
+                    ],
+                    correct: 2
+                }
+                
+            ];
+        </script>
         <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>
         <script language="javascript" type="text/javascript" src="init.js" ></script>
     </head>
@@ -36,10 +61,10 @@
         <div id="form">
             <div id="question">Test</div>
             <ul>
-                <li><button onclick="questionSubmit('A')">This One</button> <span id="q-a">Test Answer 1</span></li><br>
-                <li><button onclick="questionSubmit('B')">This One</button> <span id="q-b">Test Answer 2</span></li><br>
-                <li><button onclick="questionSubmit('C')">This One</button> <span id="q-c">Test Answer 3</span></li><br>
-                <li><button onclick="questionSubmit('D')">This One</button> <span id="q-d">Test Answer 4</span></li>
+                <li><button onclick="questionSubmit(0)">This One</button> <span id="q-0">Test Answer 1</span></li><br>
+                <li><button onclick="questionSubmit(1)">This One</button> <span id="q-1">Test Answer 2</span></li><br>
+                <li><button onclick="questionSubmit(2)">This One</button> <span id="q-2">Test Answer 3</span></li><br>
+                <li><button onclick="questionSubmit(3)">This One</button> <span id="q-3">Test Answer 4</span></li>
             </ul>
         </div>
         
