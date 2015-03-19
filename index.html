@@ -15,13 +15,14 @@
             transform: translate(-50%, -50%);
             z-index: 50;
             background-color: rgba(100, 100, 100, 100);
-            padding: 12px;
+            padding: 8px;
             border-radius: 8px;
             
         }
         
         #question {
             color: #FFFFFF;
+            text-align: center;
         }
         
     </style>
@@ -31,10 +32,10 @@
         <div id="form">
             <div id="question">Test</div>
             <ul>
-                <li><button onclick="questionSubmit('A')">This One</button> <span id="q-a"></span></li>
-                <li><button onclick="questionSubmit('B')">This One</button> <span id="q-b"></span></li>
-                <li><button onclick="questionSubmit('C')">This One</button> <span id="q-c"></span></li>
-                <li><button onclick="questionSubmit('D')">This One</button> <span id="q-d"></span></li>
+                <li><button onclick="questionSubmit('A')">This One</button> <span id="q-a">Test Answer 1</span></li><br>
+                <li><button onclick="questionSubmit('B')">This One</button> <span id="q-b">Test Answer 2</span></li><br>
+                <li><button onclick="questionSubmit('C')">This One</button> <span id="q-c">Test Answer 3</span></li><br>
+                <li><button onclick="questionSubmit('D')">This One</button> <span id="q-d">Test Answer 4</span></li>
             </ul>
         </div>
         
