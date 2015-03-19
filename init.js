@@ -24,8 +24,8 @@ var numCoalsDestroyed = 0;
 var questions_left = questions;
 var questionSubmit;
 
-function askQuestion() {
-	var index = Math.floor(Math.random() * questions_left.length):
+function askQuestion(callback) {
+	var index = Math.floor(Math.random() * questions_left.length);
 	
 	var curr = questions_left[index];
 	
@@ -57,6 +57,7 @@ function askQuestion() {
 			
 			if (isCorrect)
 				createjs.Ticker.setPaused(false);
+				callback();
 			else { //Do Death
 				cleanup();
 			}
@@ -292,15 +293,24 @@ function handleMouseDown(event)
         if(numCoalsDestroyed % 3 === 0){
 	    	enemyYSpeed *= 1.25;
 	    	enemyXSpeed *= 1.3;
+	    	
+	    	askQuestion(function() {
+	    		var timeToCreate = Math.floor((Math.random()*3500)+1);
+	    setTimeout(createEnemy,timeToCreate); //execute after the given time
+	    		
+	    	});
+	    	
 	    	levelUpText.text = "Level Up!";
 	    	setTimeout(function(){
 	    		levelUpText.text = "";
 	    	}, 500);
+        }else {
+        	var timeToCreate = Math.floor((Math.random()*3500)+1);
+	    setTimeout(createEnemy,timeToCreate); //execute after the given time
         }
 
     	//Create new enemy
-    	var timeToCreate = Math.floor((Math.random()*3500)+1);
-	    setTimeout(createEnemy,timeToCreate); //execute after the given time
+    	
 
     }
     
