@@ -55,10 +55,10 @@ function askQuestion(callback) {
 			document.getElementById("answers").style.visibility = "visible";
 			document.getElementById("form").style.visibility = "hidden";
 			
-			if (isCorrect)
+			if (isCorrect){
 				createjs.Ticker.setPaused(false);
 				callback();
-			else { //Do Death
+			}else { //Do Death
 				cleanup();
 			}
 			
