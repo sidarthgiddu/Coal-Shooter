@@ -7,11 +7,22 @@
         <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>
         <script language="javascript" type="text/javascript" src="init.js" ></script>
     </head>
+    <style>
+        #form {
+            position: absolute;
+            left: 512px;
+            top: 384px;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            
+        }
+        
+    </style>
     <body>
         <canvas id="myCanvas"></canvas>
         
         <div id="form">
-            <div id="question"></div>
+            <div id="question">Test</div>
             <input id="answer"></input>
             <button onclick="submitAnswer()">Check</button>
         </div>
