@@ -52,7 +52,7 @@ function askQuestion(callback) {
 		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!");
 		
 		setTimeout(function() {
-			document.getElementById("answers").style.visibility = "visible";
+			document.getElementById("answers").style.visibility = undefined;
 			document.getElementById("form").style.visibility = "hidden";
 			
 			if (isCorrect){
