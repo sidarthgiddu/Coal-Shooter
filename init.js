@@ -21,48 +21,48 @@ var gameTime = 0;
 var timerText;
 var numCoalsDestroyed = 0;
 
-var questions_left = questions;
+var questions_left = questions; //contains an array of the questions left
 var questionSubmit;
 
-function askQuestion(callback) {
-	var index = Math.floor(Math.random() * questions_left.length);
+function askQuestion(callback) { //callback function
+	var index = Math.floor(Math.random() * questions_left.length);//restricts the bounds of the index so as to not create a run time error
 	
-	var curr = questions_left[index];
+	var curr = questions_left[index];//gets current question
 	
-	var q = questions_left;
+	var q = questions_left; //refers to questions_left
 	questions_left = [];
 	for (var i = 0; i < q.length; i++)
 		if (i !== index)
-			questions_left.push(q[i]);
+			questions_left.push(q[i]);//adds whatever questions are left to questions left except the existing question
 	
-	createjs.Ticker.setPaused(true);
+	createjs.Ticker.setPaused(true);//pauses the game
 	
-	document.getElementById("form").style.visibility = "visible";
-	document.getElementById("answers").style.visibility = "visible";
-	document.getElementById("question").innerHTML = curr.question;
+	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
+	document.getElementById("answers").style.visibility = "visible"; //sets the css property of the answers as visible
+	document.getElementById("question").innerHTML = curr.question;//assigns the div id question w/ the current question
 	
-	document.getElementById("q-0").innerHTML = curr.answers[0];
-	document.getElementById("q-1").innerHTML = curr.answers[1];
-	document.getElementById("q-2").innerHTML = curr.answers[2];
-	document.getElementById("q-3").innerHTML = curr.answers[3];
+	document.getElementById("q-0").innerHTML = curr.answers[0]; //assigns the span id q-0 w/ the current answer
+	document.getElementById("q-1").innerHTML = curr.answers[1]; //assigns the span id q-1 w/ the current answer
+	document.getElementById("q-2").innerHTML = curr.answers[2]; //assigns the span id q-2 w/ the current answer
+	document.getElementById("q-3").innerHTML = curr.answers[3]; //assigns the span id q-3 w/ the current answer
 	
-	questionSubmit = function(ind) {
-		document.getElementById("answers").style.visibility = "hidden";
-		var isCorrect = ind === curr.correct;
+	questionSubmit = function(ind) { //ind represents the answer
+		document.getElementById("answers").style.visibility = "hidden"; //hides the answers using css property
+		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
 		
-		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!");
+		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
 		
 		setTimeout(function() {
-			document.getElementById("form").style.visibility = "hidden";
+			document.getElementById("form").style.visibility = "hidden"; //hides the form
 			
 			if (isCorrect){
-				createjs.Ticker.setPaused(false);
-				callback();
+				createjs.Ticker.setPaused(false); //resumes the game
+				callback(); //calls callback function
 			}else { //Do Death
-				cleanup();
+				cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
 			}
 			
-		}, 1000);
+		}, 1000); //run for 1000 milliseconds
 		
 		questionSubmit = undefined;
 	}
@@ -71,7 +71,7 @@ function askQuestion(callback) {
 }
 
 function sign(n){
-	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1);
+	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1); //if n=0 return 0, if n>0 return 1, else return -1
 } 
 
 window.onload = function()
