@@ -71,7 +71,7 @@ function askQuestion(callback) { //callback function
 }
 
 function sign(n){
-	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1); //if n=0 return 0, if n>0 return 1, else return -1
+	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1); //if n = 0 return 0, if n > 0 return 1, else return -1
 } 
 
 window.onload = function()
@@ -188,7 +188,7 @@ function queueLoaded(event)
     stage.addChild(crossHair); //adds crosshair
 
     // Add ticker
-    createjs.Ticker.setFPS(30);
+    createjs.Ticker.setFPS(30); 
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', tickEvent);
 
@@ -322,12 +322,12 @@ function handleMouseDown(event)
 }
 
 function cleanup() {
-	//End Game and Clean up
-	timerText.text = "GAME OVER";
-	stage.removeChild(animation);
-	stage.removeChild(crossHair);
-	var si =createjs.Sound.play("gameOverSound");
-	clearInterval(gameTimer);	
+	//ends game and cleans up
+	timerText.text = "GAME OVER"; //display GAME OVER
+	stage.removeChild(animation); //removes the bat
+	stage.removeChild(crossHair); //removes the crosshair
+	var si =createjs.Sound.play("gameOverSound"); //play gameOverSound
+	clearInterval(gameTimer); //stops and clears the timer	
 }
 
 function updateTime()
