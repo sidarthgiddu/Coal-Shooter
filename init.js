@@ -264,8 +264,7 @@ function handleMouseDown(event)
     createjs.Sound.play("shot");
 
     //Increase speed of enemy slightly
-    enemyXSpeed = 1.05 * enemyXSpeed;
-    enemyYSpeed = 1.05 * enemyYSpeed;
+    
 
     //Obtain Shot position
     var shotX = Math.round(event.clientX);
