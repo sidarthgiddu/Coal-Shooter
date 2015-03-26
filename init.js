@@ -254,8 +254,8 @@ function handleMouseMove(event)
 {
     var cnvs = document.getElementById("myCanvas");
     //Offset the position by 45 pixels so mouse is in center of crosshair
-    crossHair.x = event.clientX-45 - cnvs.clientWidth;
-    crossHair.y = event.clientY-45 - cnvs.clientHeight;
+    crossHair.x = event.clientX-45 - cnvs.clientLeft;
+    crossHair.y = event.clientY-45 - cnvs.clientTop;
 }
 
 function handleMouseDown(event)
