@@ -191,10 +191,11 @@ function queueLoaded(event)
     createjs.Ticker.setFPS(30); 
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', tickEvent);
-
+	
+    var cnvs = document.getElementById("myCanvas");
     // Set up events AFTER the game is loaded
-    window.onmousemove = handleMouseMove;
-    window.onmousedown = handleMouseDown;
+    cnvs.onmousemove = handleMouseMove;
+    cnvs.onmousedown = handleMouseDown;
 }
 
 function createEnemy()
