@@ -156,6 +156,7 @@ function queueLoaded(event)
     timerText = new createjs.Text("Time: " + gameTime.toString(), font, "#FFF"); //displays the time in string format
     timerText.x = 800; //sets position of the timer text: 800 on the x-axis
     timerText.y = 10; //sets position of the timer text: 10 on the y-axis
+    timerText.textAlign = "right";
     stage.addChild(timerText);
     
     levelUpText = new createjs.Text("", font, "#FFF");
