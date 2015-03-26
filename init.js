@@ -269,8 +269,9 @@ function handleMouseDown(event)
     
 
     //Obtain Shot position
-    var shotX = Math.round(event.clientX);
-    var shotY = Math.round(event.clientY);
+    var cnvs = document.getElementById("myCanvas");
+    var shotX = Math.round(event.clientX - cnvs.offsetLeft + (cnvs.width / 2));
+    var shotY = Math.round(event.clientY - cnvs.offsetTop + (cnvs.height / 2));
     var spriteX = Math.round(animation.x);
     var spriteY = Math.round(animation.y);
 
