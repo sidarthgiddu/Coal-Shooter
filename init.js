@@ -76,9 +76,8 @@ function askQuestion(callback) { //callback function
 }
 
 function do_win() {
+	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
 	document.getElementById("form").innerHTML = "<h1>You Win!</h1>";
-	
-	
 	
 }
 
