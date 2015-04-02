@@ -43,7 +43,7 @@ function askQuestion(callback) { //callback function
 			questions_left.push(q[i]);//adds whatever questions are left to questions left except the existing question
 	
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
-	document.getElementById("answers").style.visibility = "visible"; //sets the css property of the answers as visible
+	document.getElementById("answers").style.display = "initial"; //sets the css property of the answers as visible
 	document.getElementById("question").innerHTML = curr.question;//assigns the div id question w/ the current question
 	
 	document.getElementById("q-0").innerHTML = curr.answers[0]; //assigns the span id q-0 w/ the current answer
@@ -52,10 +52,10 @@ function askQuestion(callback) { //callback function
 	document.getElementById("q-3").innerHTML = curr.answers[3]; //assigns the span id q-3 w/ the current answer
 	
 	questionSubmit = function(ind) { //ind represents the answer
-		document.getElementById("answers").style.visibility = "hidden"; //hides the answers using css property
+		document.getElementById("answers").style.display = "none"; //hides the answers using css property
 		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
 		
-		document.getElementById("question").innerHTML = (isCorrect ? "Correct!" : "Wrong!"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
+		document.getElementById("question").innerHTML = "<h1>" + (isCorrect ? "Correct!" : "Wrong!") + "</h1>"; //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
 		
 		setTimeout(function() {
 			document.getElementById("form").style.visibility = "hidden"; //hides the form
@@ -77,7 +77,8 @@ function askQuestion(callback) { //callback function
 
 function do_win() {
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
-	document.getElementById("form").innerHTML = "<h1>You Win!</h1>";
+	document.getElementById("answers").style.display = "initial";
+	document.getElementById("answers").innerHTML = "<h1>You Win!</h1>";
 	
 }
 
