@@ -25,6 +25,13 @@ var questions_left = questions; //contains an array of the questions left
 var questionSubmit;
 
 function askQuestion(callback) { //callback function
+	createjs.Ticker.setPaused(true);//pauses the game
+	
+	if (questions_left.length === 0) {
+		do_win();
+		return;
+	}
+	
 	var index = Math.floor(Math.random() * questions_left.length);//restricts the bounds of the index so as to not create a run time error
 	
 	var curr = questions_left[index];//gets current question
@@ -34,8 +41,6 @@ function askQuestion(callback) { //callback function
 	for (var i = 0; i < q.length; i++)
 		if (i !== index)
 			questions_left.push(q[i]);//adds whatever questions are left to questions left except the existing question
-	
-	createjs.Ticker.setPaused(true);//pauses the game
 	
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
 	document.getElementById("answers").style.visibility = "visible"; //sets the css property of the answers as visible
@@ -67,6 +72,13 @@ function askQuestion(callback) { //callback function
 		questionSubmit = undefined;
 	}
 	setTimeout(function(){questionSubmit(-1)}, 20000);
+	
+}
+
+function do_win() {
+	document.getElementById("form").innerHTML = "<h1>You Win!</h1>";
+	
+	
 	
 }
 
@@ -344,6 +356,6 @@ function updateTime()
 	else
 	{
 		timerText.text = "Time: " + gameTime
-    createjs.Sound.play("tick");
+    		createjs.Sound.play("tick");
 	}
 }
