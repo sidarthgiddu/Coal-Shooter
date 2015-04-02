@@ -55,19 +55,20 @@ function askQuestion(callback) { //callback function
 		document.getElementById("answers").style.display = "none"; //hides the answers using css property
 		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
 		
-		document.getElementById("question").innerHTML = "<h1>" + (isCorrect ? "Correct!" : "Wrong!") + "</h1>"; //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
+		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
 		
-		setTimeout(function() {
-			document.getElementById("form").style.visibility = "hidden"; //hides the form
-			
-			if (isCorrect){
-				createjs.Ticker.setPaused(false); //resumes the game
-				callback(); //calls callback function
-			}else { //Do Death
-				cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
-			}
-			
-		}, 1000); //run for 1000 milliseconds
+		if (isCorrect)
+			setTimeout(function() {
+				document.getElementById("form").style.visibility = "hidden"; //hides the form
+				
+				if (isCorrect){
+					createjs.Ticker.setPaused(false); //resumes the game
+					callback(); //calls callback function
+				}else { //Do Death
+					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
+				}
+				
+			}, 1000); //run for 1000 milliseconds
 		
 		questionSubmit = undefined;
 	}
@@ -77,7 +78,7 @@ function askQuestion(callback) { //callback function
 
 function do_win() {
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
-	document.getElementById("question").innerHTML = "<h1>You Win!</h1>";
+	document.getElementById("question").innerHTML = "<h1>You Win!</h1><br><button onclick=\"location.reload();\">Play Again?</button>";
 	
 }
 
