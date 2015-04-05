@@ -135,8 +135,8 @@ window.onload = function()
         	id: 'deathSound', 
         	src: 'assets/die.mp3'},
         {
-        	id: 'batSpritesheet', 
-        	src: 'assets/batSpritesheet.png'},
+        	id: 'coalSpritesheet', 
+        	src: 'assets/piece_of_coal.jpg'},
         {
         	id: 'batDeath', src: 
         	'assets/batDeath.png'},
@@ -182,9 +182,9 @@ function queueLoaded(event)
 
     // Create bat spritesheet
     spriteSheet = new createjs.SpriteSheet({
-        "images": [queue.getResult('batSpritesheet')], //queue loads the bat spritesheet
-        "frames": {"width": 198, "height": 117}, //gives the width and height of each sprite in the sprite sheet
-        "animations": { "flap": [0,4] } //animations will be called "flap", go from spirte 0 to sprite 4
+        "images": [queue.getResult('coalSpritesheet')], //queue loads the bat spritesheet
+        "frames": {"width": 213, "height": 160}, //gives the width and height of each sprite in the sprite sheet
+        "animations": { "sit": 0 } //animations will be called "flap", go from spirte 0 to sprite 4
     });
 
     // Create bat death spritesheet
