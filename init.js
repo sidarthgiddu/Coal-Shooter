@@ -18,6 +18,7 @@ var scoreText;
 var gameTimer;
 var gameTime = 0;
 var timerText;
+var testVar = 0;
 
 window.onload = function()
 {
