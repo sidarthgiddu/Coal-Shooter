@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>30 Minute Game</title>
+        <title>30 Minute Game 2</title>
         <link href="normalize.css" type="text/css" rel="stylesheet" />
         <link href="game.css" type="text/css" rel="stylesheet" />
-        <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>
-        <script language="javascript" type="text/javascript" src="init.js" ></script>
+        <script>
+            var questions = [
+                {
+                    question: "What is the name of electric car?",
+                    answers: [
+                        "Citroen",
+                        "The Once-ler",
+                        "Lorax",
+                        "Tesla Model S"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What does the box truck's fuel source?",
+                    answers: [
+                        "Vegetable Oil",
+                        "Gasoline",
+                        "Hydrogen",
+                        "Nuclear fission"
+                    ],
+                    correct: 0
+                }
+                
+            ];
+        </script>
+        <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>        <script language="javascript" type="text/javascript" src="init.js" ></script>
     </head>
+    <style>
+        html, body {
+            min-height: 100%;
+            min-width: 100%;
+        }
+    
+        ul {
+            padding-left: 20px;
+        }
+        
+        button {
+            
+        }
+        
+        #form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+            /*background-color: rgba(100, 100, 100, 100);*/
+            padding: 8px;
+            border-radius: 8px;
+            visibility: hidden;
+            font-size: 200%;
+            font-weight: bold;
+        }
+        
+        #question {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        
+        #myCanvas {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+    </style>
     <body>
         <canvas id="myCanvas"></canvas>
+        
+        <div id="form">
+            <div id="question">Test</div>
+            <ul id="answers">
+                <li><button id="q-0" onclick="questionSubmit(0)">This One</button> </li><br>
+                <li><button id="q-1" onclick="questionSubmit(1)">This One</button> </li><br>
+                <li><button id="q-2" onclick="questionSubmit(2)">This One</button> </li><br>
+                <li><button id="q-3" onclick="questionSubmit(3)">This One</button></li>
+            </ul>
+        </div>
+        
+        
 </body>
 </html>
