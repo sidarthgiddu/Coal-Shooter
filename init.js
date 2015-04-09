@@ -210,6 +210,9 @@ function queueLoaded(event)
     // Set up events AFTER the game is loaded
     cnvs.onmousemove = handleMouseMove;
     cnvs.onmousedown = handleMouseDown;
+    
+    var coalImage = document.getElementById('coalSpritesheet');
+    coalImage.src = white2transparent(coalImage);
 }
 
 function white2transparent(img)
