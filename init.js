@@ -219,7 +219,8 @@ function white2transparent(img)
 {
     var c = document.createElement('canvas');
 
-    var w = img.width, h = img.height;
+    var w = img.width;
+    var h = img.height;
 
     c.width = w;
     c.height = h;
@@ -230,7 +231,10 @@ function white2transparent(img)
     var imageData = ctx.getImageData(0,0, w, h);
     var pixel = imageData.data;
 
-    var r=0, g=1, b=2,a=3;
+    var r=0;
+    var g=1; 
+    var b=2;
+    var a=3;
     for (var p = 0; p<pixel.length; p+=4)
     {
       if (
@@ -242,7 +246,7 @@ function white2transparent(img)
 
     ctx.putImageData(imageData,0,0);
 
-    return c.toDataURL('image/png');
+    return c.toDataURL('image/jpg');
 }
 
 function createEnemy()
