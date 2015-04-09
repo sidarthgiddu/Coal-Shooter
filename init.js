@@ -246,7 +246,7 @@ function white2transparent(img)
 
     ctx.putImageData(imageData,0,0);
 
-    return c.toDataURL('image/jpg');
+    return c.toDataURL('image/jpeg');
 }
 
 function createEnemy()
