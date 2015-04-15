@@ -228,6 +228,43 @@ function queueLoaded(event)
     // Set up events AFTER the game is loaded
     cnvs.onmousemove = handleMouseMove;
     cnvs.onmousedown = handleMouseDown;
+    
+    var coalImage = document.getElementById('coalSpritesheet');
+    coalImage.src = white2transparent(coalImage);
+}
+
+function white2transparent(img)
+{
+    var c = document.createElement('canvas');
+
+    var w = img.width;
+    var h = img.height;
+
+    c.width = w;
+    c.height = h;
+
+    var ctx = c.getContext('2d');
+
+    ctx.drawImage(img, 0, 0, w, h);
+    var imageData = ctx.getImageData(0,0, w, h);
+    var pixel = imageData.data;
+
+    var r=0;
+    var g=1; 
+    var b=2;
+    var a=3;
+    for (var p = 0; p<pixel.length; p+=4)
+    {
+      if (
+          pixel[p+r] == 255 &&
+          pixel[p+g] == 255 &&
+          pixel[p+b] == 255) // if white then change alpha to 0
+      {pixel[p+a] = 0;}
+    }
+
+    ctx.putImageData(imageData,0,0);
+
+    return c.toDataURL('image/jpeg');
 }
 
 function createEnemy()
