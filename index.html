@@ -69,51 +69,51 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-			opacity : 0.5;
+	    opacity : 0.5;
         }
 		
-		#startup_screen {
-			position: absolute;
-			font: 48px Helvetica;
+	#startup_screen {
+	    position: absolute;
+	    font: 48px Helvetica;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-		}
+	}
         
-		#direction_screen {
-			position: absolute;
-			visibility: hidden;
-			font: 36px Helvetica;
+	#direction_screen {
+	    position: absolute;
+	    visibility: hidden;
+	    font: 36px Helvetica;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-		}
+	}
     </style>
     <body>
         <canvas id="myCanvas"></canvas>
-		<div id="startup_screen">
-			Welcome to Super Shock Bros!
-			<br>
-			<br>
-			<button id="play" onclick="playGame()">Play!</button><br>
-			<br>
-			<button id="directions" onclick="displayDirections()">Directions?</button>
-		</div>
-		<div id="direction_screen">
-			Help Save Sarah the Sun by destroying the coal pieces in the way!
-			<br>
-			<br>
-			Every time you destroy 3 coals, you'll be asked a question about the truck.
-			<br>
-			<br>
-			Answer the question right to level up!
-			<br>
-			<br>
-			Beware: the coals get harder to hit with each level!
-			<br>
-			<br>
-			<button id="play" onclick="playGame()">Play!</button>
-		</div>
+	<div id="startup_screen">
+		Welcome to Super Shock Bros!
+		<br>
+		<br>
+		<button id="play" onclick="playGame()">Play!</button><br>
+		<br>
+		<button id="directions" onclick="displayDirections()">Directions?</button>
+	</div>
+	<div id="direction_screen">
+		Help Save Sarah the Sun by destroying the coal pieces in the way!
+		<br>
+		<br>
+		Every time you destroy 3 coals, you'll be asked a question about the truck.
+		<br>
+		<br>
+		Answer the question right to level up!
+		<br>
+		<br>
+		Beware: the coals get harder to hit with each level!
+		<br>
+		<br>
+		<button id="play" onclick="playGame()">Play!</button>
+	</div>
         <div id="form">
             <div id="question">Test</div>
             <ul id="answers">
@@ -123,7 +123,5 @@
                 <li><button id="q-3" onclick="questionSubmit(3)">This One</button></li>
             </ul>
         </div>
-        
-        
-</body>
+      </body>
 </html>
