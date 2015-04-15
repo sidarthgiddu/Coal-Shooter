@@ -30,7 +30,8 @@
             ];
             document.getElementById('crossHair').style.visibility = "hidden";
         </script>
-        <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>        <script language="javascript" type="text/javascript" src="init.js" ></script>
+        <script language="javascript" type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js" ></script>        
+		<script language="javascript" type="text/javascript" src="init.js" ></script>
     </head>
     <style>
         html, body {
@@ -73,22 +74,26 @@
 	    opacity : 0.5;
         }
 		
-	#startup_screen {
-	    position: absolute;
-	    font: 48px Helvetica;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-	}
-        
-	#direction_screen {
-	    position: absolute;
-	    visibility: hidden;
-	    font: 36px Helvetica;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-	}
+		#startup_screen {
+			position: absolute;
+			font: 48px Helvetica;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+		}
+			
+		#direction_screen {
+			position: absolute;
+			visibility: hidden;
+			font: 36px Helvetica;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+		}
+		
+		#answers li{
+			list-style-type: none;
+		}
     </style>
     <body>
         <canvas id="myCanvas"></canvas>
