@@ -65,20 +65,17 @@ function askQuestion(callback) { //callback function
 				
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
-					levelUp(function(){
-						levelUpText.text = "Level Up!";
-						levelUpText.text = "";
-					},1000);
+					levelUpText.text = "Level Up!"
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
 				}
-	    		
+	    			levelUpText.text = "";
 			}, 1000); //run for 1000 milliseconds
 			
 		
 		questionSubmit = undefined;
-		levelUpText.text = "";
+		
 	}
 	setTimeout(function(){questionSubmit(-1)}, 20000);
 	
