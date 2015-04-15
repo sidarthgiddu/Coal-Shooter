@@ -65,7 +65,10 @@ function askQuestion(callback) { //callback function
 				
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
-					levelUpText.text = "Level Up!";
+					levelUp(function(){
+						levelUpText.text = "Level Up!";
+						levelUpText.text = "";
+					},1000);
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
@@ -95,8 +98,9 @@ displayDirections = function(){
 playGame = function(){
 	document.getElementById("direction_screen").style.visibility = "hidden";
 	document.getElementById("startup_screen").style.visibility = "hidden";
-	document.getElementByID("myCanvas").style.opacity = "0.0";
+	document.getElementById("myCanvas").style.opacity = "1.0";
 };	
+
 
 function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1); //if n = 0 return 0, if n > 0 return 1, else return -1
