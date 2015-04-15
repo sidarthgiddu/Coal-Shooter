@@ -16,6 +16,8 @@ var enemyYSpeed = 2.75;
 var score = 0;
 var scoreText;
 var levelUpText;
+var displayDirections;
+var playGame;
 var gameTimer;
 var gameTime = 0;
 var timerText;
@@ -63,14 +65,17 @@ function askQuestion(callback) { //callback function
 				
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
+					levelUpText.text = "Level Up!";
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
 				}
-				
+	    		
 			}, 1000); //run for 1000 milliseconds
+			
 		
 		questionSubmit = undefined;
+		levelUpText.text = "";
 	}
 	setTimeout(function(){questionSubmit(-1)}, 20000);
 	
@@ -81,6 +86,17 @@ function do_win() {
 	document.getElementById("question").innerHTML = "<h1>You Win!</h1><br><button onclick=\"location.reload();\">Play Again?</button>";
 	
 }
+
+displayDirections = function(){
+	document.getElementById("direction_screen").style.visibility = "visible";
+	document.getElementById("startup_screen").style.visibility = "hidden";
+};
+
+playGame = function(){
+	document.getElementById("direction_screen").style.visibility = "hidden";
+	document.getElementById("startup_screen").style.visibility = "hidden";
+	document.getElementByID("myCanvas").style.opacity = "0.0";
+};	
 
 function sign(n){
 	return  (n === 0) ? 0 : ((n > 0) ? 1 : -1); //if n = 0 return 0, if n > 0 return 1, else return -1
@@ -98,7 +114,7 @@ window.onload = function()
     context.canvas.width = WIDTH; //sets the canvas width to our predetermined width
     context.canvas.height = HEIGHT; //sets the canvas height to our predetermined height
     stage = new createjs.Stage("myCanvas"); //creates a canvas
-
+	
     /*
      *      Set up the Asset Queue and load sounds
      *
@@ -107,6 +123,8 @@ window.onload = function()
     queue.installPlugin(createjs.Sound); //install sound plugin on the queue
     queue.on("complete", queueLoaded, this); // runs the defined queue loaded function when the queue is complete
     createjs.Sound.alternateExtensions = ["ogg"]; //if the browser cannot play the mp3 files, it will play the alternate ogg file
+	pauseGame();
+	
 
     /*
      *      Create a load manifest for all assets
@@ -235,6 +253,10 @@ function batDeath()
   stage.addChild(deathAnimation);
 }
 
+function pauseGame(){
+	createjs.Ticker.setPaused(true);
+}
+
 function tickEvent()
 {
 	//Make sure enemy bat is within game boundaries and move enemy Bat
@@ -316,10 +338,11 @@ function handleMouseDown(event)
 	    		
 	    	});
 	    	
-	    	levelUpText.text = "Level Up!";
+	    	/*
 	    	setTimeout(function(){
 	    		levelUpText.text = "";
 	    	}, 500);
+			*/
         }else {
         	var timeToCreate = Math.floor((Math.random()*3500)+1);
 	    setTimeout(createEnemy,timeToCreate); //execute after the given time
