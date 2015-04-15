@@ -155,7 +155,7 @@ window.onload = function()
         	src: 'assets/die.mp3'},
         {
         	id: 'coalSpritesheet', 
-        	src: 'assets/piece_of_coal.jpg'},
+        	src: 'assets/piece_of_coal.png'},
         {
         	id: 'batDeath', src: 
         	'assets/batDeath.png'},
@@ -367,8 +367,8 @@ function handleMouseDown(event)
     	
         //Make it harder next time
         if(numCoalsDestroyed % 3 === 0){
-	    	enemyYSpeed *= 10;
-	    	enemyXSpeed *= 10;
+	    	enemyYSpeed *= 3;
+	    	enemyXSpeed *= 3;
 	    	
 	    	askQuestion(function() {
 	    		var timeToCreate = Math.floor((Math.random()*3500)+1);
