@@ -65,7 +65,7 @@ function askQuestion(callback) { //callback function
 				
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
-					levelUpText.text = "Level Up!"
+					//levelUpText.text = "Level Up!"
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
