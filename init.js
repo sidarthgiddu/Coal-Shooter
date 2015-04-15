@@ -367,8 +367,8 @@ function handleMouseDown(event)
     	
         //Make it harder next time
         if(numCoalsDestroyed % 3 === 0){
-	    	enemyYSpeed *= 1.25;
-	    	enemyXSpeed *= 1.3;
+	    	enemyYSpeed *= 2;
+	    	enemyXSpeed *= 2;
 	    	
 	    	askQuestion(function() {
 	    		var timeToCreate = Math.floor((Math.random()*3500)+1);
