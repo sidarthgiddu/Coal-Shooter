@@ -70,7 +70,7 @@ function askQuestion(callback) { //callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
 				}
-	    			levelUpText.text = "";
+	    			
 			}, 1000); //run for 1000 milliseconds
 			
 		
