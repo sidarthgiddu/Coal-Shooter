@@ -57,7 +57,7 @@ function askQuestion(callback) { //callback function
 		document.getElementById("answers").style.display = "none"; //hides the answers using css property
 		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
 		
-		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong! Try again!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
+		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
 		
 		if (isCorrect)
 			setTimeout(function() {
@@ -159,10 +159,8 @@ window.onload = function()
         	src: 'assets/piece_of_coal.png'},
         {
         	id: 'batDeath', src: 
-        	'assets/batDeath.png'},
-		{
-			id: 'sarahthesun', src:
-			'assets/sarah_the_sun.png'}
+        	'assets/batDeath.png'}
+
     ]);
     queue.load();
 
