@@ -143,7 +143,7 @@ window.onload = function()
         	src: 'assets/mars_grayscale_background.jpg'},
 		{
 			id: 'backgroundImage2',
-			src: 'assets/primary_succession.jpg'},
+			src: 'assets/forest.jpg'},
         {
         	id: 'crossHair', 
         	src: 'assets/crosshair.png'},
@@ -172,6 +172,7 @@ window.onload = function()
     ]);
     queue.load();
 
+	currentBackgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
     /*
      *      Create a timer that updates once per second
      *
@@ -183,20 +184,82 @@ window.onload = function()
 function queueLoaded(event)
 {
     // Add background image
+	
     var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
 	currentBackgroundImage = backgroundImage;
-    stage.addChild(backgroundImage); //displays the background image
+	
+    stage.addChild(currentBackgroundImage); //displays the background image
     
     var font = "48px Helvetica";
     
     //Add Score
-    scoreText = new createjs.Text("Score: " + score.toString(), font, "#FFF"); //displays the text in string format
+    scoreText = new createjs.Text("Score: " + score.toString(), font, "yellow"); //displays the text in string format
     scoreText.x = 10; //sets position of the score text: 10 on the x-axis
     scoreText.y = 10; //sets position of the score text: 10 on the y-axis
     stage.addChild(scoreText);
 
     //Ad Timer
-    timerText = new createjs.Text("Time: " + gameTime.toString(), font, "#FFF"); //displays the time in string format
+    timerText = new createjs.Text("Time: " + gameTime.toString(), font, "yellow"); //displays the time in string format
+    timerText.x = 1014; //sets position of the timer text: 1014 on the x-axis
+    timerText.y = 10; //sets position of the timer text: 10 on the y-axis
+    timerText.textAlign = "right";
+    stage.addChild(timerText);
+    
+    levelUpText = new createjs.Text("", font, "#FFF");
+    levelUpText.x = 400;
+    levelUpText.y = 200;
+    stage.addChild(levelUpText);
+    
+    // Play background sound
+    createjs.Sound.play("background", {loop: -1}); //plays and loops the background sound indefinitely
+
+    // Create bat spritesheet
+    spriteSheet = new createjs.SpriteSheet({
+        "images": [queue.getResult('coalSpritesheet')], //queue loads the coal spritesheet
+        "frames": {"width": 213, "height": 160}, //gives the width and height of each sprite in the sprite sheet
+        "animations": { "sit": 0 } //animations will be called "flap", go from spirte 0 to sprite 4
+    });
+
+    // Create bat death spritesheet
+    batDeathSpriteSheet = new createjs.SpriteSheet({
+    	"images": [queue.getResult('batDeath')], //queue loads bat death spritesheet
+    	"frames": {"width": 198, "height" : 148}, //gives the width and height of each sprite in the sprite sheet
+    	"animations": {"die": [0,7, false,1 ] } //animations will be called "die", false: don't want it to repeat it, and we only want to play it once
+    });
+
+    // Create bat sprite
+    createEnemy(); //calls the createEnemy function defined below
+
+    // Create crosshair
+    crossHair = new createjs.Bitmap(queue.getResult("crossHair")); //creates bitmap of crosshair
+    stage.addChild(crossHair); //adds crosshair
+
+    // Add ticker
+    createjs.Ticker.setFPS(30); 
+    createjs.Ticker.addEventListener('tick', stage);
+    createjs.Ticker.addEventListener('tick', tickEvent);
+	
+    var cnvs = document.getElementById("myCanvas");
+    // Set up events AFTER the game is loaded
+    cnvs.onmousemove = handleMouseMove;
+    cnvs.onmousedown = handleMouseDown;
+    
+}   
+
+function queueReload()
+{
+	stage.addChild(currentBackgroundImage);
+	
+	var font = "48px Helvetica";
+	
+	//Add Score
+    scoreText = new createjs.Text("Score: " + score.toString(), font, "yellow"); //displays the text in string format
+    scoreText.x = 10; //sets position of the score text: 10 on the x-axis
+    scoreText.y = 10; //sets position of the score text: 10 on the y-axis
+    stage.addChild(scoreText);
+
+    //Ad Timer
+    timerText = new createjs.Text("Time: " + gameTime.toString(), font, "yellow"); //displays the time in string format
     timerText.x = 1014; //sets position of the timer text: 1014 on the x-axis
     timerText.y = 10; //sets position of the timer text: 10 on the y-axis
     timerText.textAlign = "right";
@@ -227,10 +290,6 @@ function queueLoaded(event)
     // Create bat sprite
     createEnemy(); //calls the createEnemy function defined below
 
-    // Create crosshair
-    crossHair = new createjs.Bitmap(queue.getResult("crossHair")); //creates bitmap of crosshair
-    stage.addChild(crossHair); //adds crosshair
-
     // Add ticker
     createjs.Ticker.setFPS(30); 
     createjs.Ticker.addEventListener('tick', stage);
@@ -240,8 +299,7 @@ function queueLoaded(event)
     // Set up events AFTER the game is loaded
     cnvs.onmousemove = handleMouseMove;
     cnvs.onmousedown = handleMouseDown;
-    
-}   
+}
 
 function askQuestion(callback) { //callback function
 	createjs.Ticker.setPaused(true);//pauses the game
@@ -286,7 +344,10 @@ function askQuestion(callback) { //callback function
 					stage.removeChild(currentBackgroundImage);
 					var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
 					currentBackgroundImage = backgroundImage2;
+					/*
 					stage.addChild(currentBackgroundImage);
+					*/
+					queueReload();
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
