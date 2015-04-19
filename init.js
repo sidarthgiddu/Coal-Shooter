@@ -57,7 +57,7 @@ function askQuestion(callback) { //callback function
 		document.getElementById("answers").style.display = "none"; //hides the answers using css property
 		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
 		
-		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
+		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong! Try again!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
 		
 		if (isCorrect)
 			setTimeout(function() {
@@ -83,9 +83,10 @@ function askQuestion(callback) { //callback function
 
 function do_win() {
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
-	document.getElementById("question").innerHTML = "<h1>You Saved Sarah the Sun! You Win!</h1><br><button onclick=\"location.reload();\">Play Again?</button>";
+	document.getElementById("question").innerHTML = "<h1>You Saved Sarah the Sun! You Win!</h1><img src = 'assets/sarah_the_sun.png' alt = 'logo'><br><button onclick=\'location.reload();\'>Play Again?</button>";
 	
 }
+
 
 displayDirections = function(){
 	document.getElementById("direction_screen").style.visibility = "visible";
@@ -159,6 +160,9 @@ window.onload = function()
         {
         	id: 'batDeath', src: 
         	'assets/batDeath.png'},
+		{
+			id: 'sarahthesun', src:
+			'assets/sarah_the_sun.png'}
     ]);
     queue.load();
 
@@ -230,43 +234,7 @@ function queueLoaded(event)
     cnvs.onmousemove = handleMouseMove;
     cnvs.onmousedown = handleMouseDown;
     
-    var coalImage = document.getElementById('coalSpritesheet');
-    coalImage.src = white2transparent(coalImage);
-}
-
-function white2transparent(img)
-{
-    var c = document.createElement('canvas');
-
-    var w = img.width;
-    var h = img.height;
-
-    c.width = w;
-    c.height = h;
-
-    var ctx = c.getContext('2d');
-
-    ctx.drawImage(img, 0, 0, w, h);
-    var imageData = ctx.getImageData(0,0, w, h);
-    var pixel = imageData.data;
-
-    var r=0;
-    var g=1; 
-    var b=2;
-    var a=3;
-    for (var p = 0; p<pixel.length; p+=4)
-    {
-      if (
-          pixel[p+r] == 255 &&
-          pixel[p+g] == 255 &&
-          pixel[p+b] == 255) // if white then change alpha to 0
-      {pixel[p+a] = 0;}
-    }
-
-    ctx.putImageData(imageData,0,0);
-
-    return c.toDataURL('image/jpeg');
-}
+ }   
 
 function createEnemy()
 {
