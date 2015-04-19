@@ -22,10 +22,11 @@ var gameTimer;
 var gameTime = 0;
 var timerText;
 var numCoalsDestroyed = 0;
+var currentBackgroundImage;
 
 var questions_left = questions; //contains an array of the questions left
 var questionSubmit;
-
+/*
 function askQuestion(callback) { //callback function
 	createjs.Ticker.setPaused(true);//pauses the game
 	
@@ -66,6 +67,9 @@ function askQuestion(callback) { //callback function
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
 					//levelUpText.text = "Level Up!"
+					stage.removeChild(backgroundImage);
+					var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
+					stage.addChild(backgroundImage2);
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
@@ -80,6 +84,7 @@ function askQuestion(callback) { //callback function
 	setTimeout(function(){questionSubmit(-1)}, 20000);
 	
 }
+*/
 
 function do_win() {
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
@@ -136,6 +141,9 @@ window.onload = function()
         {
         	id: 'backgroundImage', 
         	src: 'assets/mars_grayscale_background.jpg'},
+		{
+			id: 'backgroundImage2',
+			src: 'assets/primary_succession.jpg'},
         {
         	id: 'crossHair', 
         	src: 'assets/crosshair.png'},
@@ -175,7 +183,8 @@ window.onload = function()
 function queueLoaded(event)
 {
     // Add background image
-    var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")) //creates the background image
+    var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
+	currentBackgroundImage = backgroundImage;
     stage.addChild(backgroundImage); //displays the background image
     
     var font = "48px Helvetica";
@@ -188,7 +197,7 @@ function queueLoaded(event)
 
     //Ad Timer
     timerText = new createjs.Text("Time: " + gameTime.toString(), font, "#FFF"); //displays the time in string format
-    timerText.x = 1014; //sets position of the timer text: 800 on the x-axis
+    timerText.x = 1014; //sets position of the timer text: 1014 on the x-axis
     timerText.y = 10; //sets position of the timer text: 10 on the y-axis
     timerText.textAlign = "right";
     stage.addChild(timerText);
@@ -232,8 +241,66 @@ function queueLoaded(event)
     cnvs.onmousemove = handleMouseMove;
     cnvs.onmousedown = handleMouseDown;
     
- }   
+}   
 
+function askQuestion(callback) { //callback function
+	createjs.Ticker.setPaused(true);//pauses the game
+	
+	if (questions_left.length === 0) {
+		do_win();
+		return;
+	}
+	
+	var index = Math.floor(Math.random() * questions_left.length);//restricts the bounds of the index so as to not create a run time error
+	
+	var curr = questions_left[index];//gets current question
+	
+	var q = questions_left; //refers to questions_left
+	questions_left = [];
+	for (var i = 0; i < q.length; i++)
+		if (i !== index)
+			questions_left.push(q[i]);//adds whatever questions are left to questions left except the existing question
+	
+	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
+	document.getElementById("answers").style.display = "initial"; //sets the css property of the answers as visible
+	document.getElementById("question").innerHTML = curr.question;//assigns the div id question w/ the current question
+	
+	document.getElementById("q-0").innerHTML = curr.answers[0]; //assigns the span id q-0 w/ the current answer
+	document.getElementById("q-1").innerHTML = curr.answers[1]; //assigns the span id q-1 w/ the current answer
+	document.getElementById("q-2").innerHTML = curr.answers[2]; //assigns the span id q-2 w/ the current answer
+	document.getElementById("q-3").innerHTML = curr.answers[3]; //assigns the span id q-3 w/ the current answer
+	
+	questionSubmit = function(ind) { //ind represents the answer
+		document.getElementById("answers").style.display = "none"; //hides the answers using css property
+		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
+		
+		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
+		
+		if (isCorrect)
+			setTimeout(function() {
+				document.getElementById("form").style.visibility = "hidden"; //hides the form
+				
+				if (isCorrect){
+					createjs.Ticker.setPaused(false); //resumes the game
+					//levelUpText.text = "Level Up!"
+					stage.removeChild(currentBackgroundImage);
+					var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
+					currentBackgroundImage = backgroundImage2;
+					stage.addChild(currentBackgroundImage);
+					callback(); //calls callback function
+				}else { //Do Death
+					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
+				}
+	    			
+			}, 1000); //run for 1000 milliseconds
+			
+		
+		questionSubmit = undefined;
+		
+	}
+	setTimeout(function(){questionSubmit(-1)}, 20000);
+	
+}
 function createEnemy()
 {
     animation = new createjs.Sprite(spriteSheet, "flap"); //creates the bat sprite object out of the sprite sheet
@@ -342,11 +409,7 @@ function handleMouseDown(event)
 	    		
 	    	});
 	    	
-	    	/*
-	    	setTimeout(function(){
-	    		levelUpText.text = "";
-	    	}, 500);
-			*/
+	    	
         }else {
         	var timeToCreate = Math.floor((Math.random()*3500)+1);
 	    setTimeout(createEnemy,timeToCreate); //execute after the given time
