@@ -26,65 +26,7 @@ var currentBackgroundImage;
 
 var questions_left = questions; //contains an array of the questions left
 var questionSubmit;
-/*
-function askQuestion(callback) { //callback function
-	createjs.Ticker.setPaused(true);//pauses the game
-	
-	if (questions_left.length === 0) {
-		do_win();
-		return;
-	}
-	
-	var index = Math.floor(Math.random() * questions_left.length);//restricts the bounds of the index so as to not create a run time error
-	
-	var curr = questions_left[index];//gets current question
-	
-	var q = questions_left; //refers to questions_left
-	questions_left = [];
-	for (var i = 0; i < q.length; i++)
-		if (i !== index)
-			questions_left.push(q[i]);//adds whatever questions are left to questions left except the existing question
-	
-	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
-	document.getElementById("answers").style.display = "initial"; //sets the css property of the answers as visible
-	document.getElementById("question").innerHTML = curr.question;//assigns the div id question w/ the current question
-	
-	document.getElementById("q-0").innerHTML = curr.answers[0]; //assigns the span id q-0 w/ the current answer
-	document.getElementById("q-1").innerHTML = curr.answers[1]; //assigns the span id q-1 w/ the current answer
-	document.getElementById("q-2").innerHTML = curr.answers[2]; //assigns the span id q-2 w/ the current answer
-	document.getElementById("q-3").innerHTML = curr.answers[3]; //assigns the span id q-3 w/ the current answer
-	
-	questionSubmit = function(ind) { //ind represents the answer
-		document.getElementById("answers").style.display = "none"; //hides the answers using css property
-		var isCorrect = ind === curr.correct; //stores either true or false, depending on whether the user answered the question correctly
-		
-		document.getElementById("question").innerHTML = (isCorrect ? "<h1>Correct!</h1>" : "<h1>Wrong!</h1><br><button onclick=\"location.reload();\">Play Again?</button>"); //sets the html of the span question to display Correct! if answer is true or Wrong! if answer is false
-		
-		if (isCorrect)
-			setTimeout(function() {
-				document.getElementById("form").style.visibility = "hidden"; //hides the form
-				
-				if (isCorrect){
-					createjs.Ticker.setPaused(false); //resumes the game
-					//levelUpText.text = "Level Up!"
-					stage.removeChild(backgroundImage);
-					var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
-					stage.addChild(backgroundImage2);
-					callback(); //calls callback function
-				}else { //Do Death
-					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
-				}
-	    			
-			}, 1000); //run for 1000 milliseconds
-			
-		
-		questionSubmit = undefined;
-		
-	}
-	setTimeout(function(){questionSubmit(-1)}, 20000);
-	
-}
-*/
+
 
 function do_win() {
 	document.getElementById("form").style.visibility = "visible"; //sets the css property of the form as visible
@@ -138,12 +80,14 @@ window.onload = function()
      *
      */
     queue.loadManifest([
+		/*
         {
         	id: 'backgroundImage', 
         	src: 'assets/mars_grayscale_background.jpg'},
 		{
 			id: 'backgroundImage2',
 			src: 'assets/forest.jpg'},
+		*/
         {
         	id: 'crossHair', 
         	src: 'assets/crosshair.png'},
@@ -172,7 +116,7 @@ window.onload = function()
     ]);
     queue.load();
 
-	currentBackgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
+	//currentBackgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
     /*
      *      Create a timer that updates once per second
      *
@@ -185,10 +129,10 @@ function queueLoaded(event)
 {
     // Add background image
 	
-    var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
-	currentBackgroundImage = backgroundImage;
+    //var backgroundImage = new createjs.Bitmap(queue.getResult("backgroundImage")); //creates the background image
+	//currentBackgroundImage = backgroundImage;
 	
-    stage.addChild(currentBackgroundImage); //displays the background image
+    //stage.addChild(currentBackgroundImage); //displays the background image
     
     var font = "48px Helvetica";
     
@@ -248,7 +192,8 @@ function queueLoaded(event)
 
 function queueReload()
 {
-	stage.addChild(currentBackgroundImage);
+	
+	//stage.addChild(currentBackgroundImage);
 	
 	var font = "48px Helvetica";
 	
@@ -273,9 +218,10 @@ function queueReload()
     // Play background sound
     createjs.Sound.play("background", {loop: -1}); //plays and loops the background sound indefinitely
 
-    // Create bat spritesheet
+    // Create coal spritesheet
+	
     spriteSheet = new createjs.SpriteSheet({
-        "images": [queue.getResult('coalSpritesheet')], //queue loads the bat spritesheet
+        "images": [queue.getResult('coalSpritesheet')], //queue loads the coal spritesheet
         "frames": {"width": 213, "height": 160}, //gives the width and height of each sprite in the sprite sheet
         "animations": { "sit": 0 } //animations will be called "flap", go from spirte 0 to sprite 4
     });
@@ -287,8 +233,9 @@ function queueReload()
     	"animations": {"die": [0,7, false,1 ] } //animations will be called "die", false: don't want it to repeat it, and we only want to play it once
     });
 
-    // Create bat sprite
+    // Create coal sprite
     createEnemy(); //calls the createEnemy function defined below
+	
 
     // Add ticker
     createjs.Ticker.setFPS(30); 
@@ -340,14 +287,11 @@ function askQuestion(callback) { //callback function
 				
 				if (isCorrect){
 					createjs.Ticker.setPaused(false); //resumes the game
-					//levelUpText.text = "Level Up!"
-					stage.removeChild(currentBackgroundImage);
-					var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
-					currentBackgroundImage = backgroundImage2;
-					/*
-					stage.addChild(currentBackgroundImage);
-					*/
-					queueReload();
+					//stage.removeChild(currentBackgroundImage);
+					//var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
+					//currentBackgroundImage = backgroundImage2;
+					//queueReload();
+					document.body.style.background = "url('assets/forest.jpg')";
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
@@ -364,12 +308,12 @@ function askQuestion(callback) { //callback function
 }
 function createEnemy()
 {
-    animation = new createjs.Sprite(spriteSheet, "flap"); //creates the bat sprite object out of the sprite sheet
+    animation = new createjs.Sprite(spriteSheet, "sit"); //creates the bat sprite object out of the sprite sheet
     animation.regX = 99; //set registration point x
     animation.regY = 58; //set registration point y
     animation.x = enemyXPos; //sets position based on this global variable
     animation.y = enemyYPos; //sets position based on this global variable
-    animation.gotoAndPlay("flap"); //plays the flap animation
+    animation.gotoAndPlay("sit"); //plays the flap animation
     animation.canBeShot = true;
     stage.addChildAt(animation,1); //add the animation behind the crosshair (which is the significance of 1)
 }
@@ -391,9 +335,9 @@ function pauseGame(){
 
 function tickEvent()
 {
-	//Make sure enemy bat is within game boundaries and move enemy Bat
+	//Make sure enemy coal is within game boundaries and move enemy coal
 	
-	if(enemyXPos < WIDTH && enemyXPos > 0) //makes sure that the bat's position is inside the game
+	if(enemyXPos < WIDTH && enemyXPos > 0) //makes sure that the coal's position is inside the game
 	{
 		enemyXPos += enemyXSpeed;
 	} else 
@@ -411,8 +355,8 @@ function tickEvent()
 	}
 	
 
-	animation.x = enemyXPos; //move the bats by adjusting the x position of the animation
-	animation.y = enemyYPos; //move the bats by adjusting the y position of the animation
+	animation.x = enemyXPos; //move the coals by adjusting the x position of the animation
+	animation.y = enemyYPos; //move the coals by adjusting the y position of the animation
 
 	
 }
@@ -491,7 +435,7 @@ function handleMouseDown(event)
 function cleanup() {
 	//ends game and cleans up
 	timerText.text = "GAME OVER"; //display GAME OVER
-	stage.removeChild(animation); //removes the bat
+	stage.removeChild(animation); //removes the coal
 	stage.removeChild(crossHair); //removes the crosshair
 	var si =createjs.Sound.play("gameOverSound"); //play gameOverSound
 	clearInterval(gameTimer); //stops and clears the timer	
