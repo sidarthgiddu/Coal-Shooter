@@ -251,7 +251,7 @@ function queueReload()
 function askQuestion(callback) { //callback function
 	createjs.Ticker.setPaused(true);//pauses the game
 	
-	if (questions_left.length === 0) {
+	if (questions_left.length === questions.length - 3) {
 		do_win();
 		return;
 	}
@@ -291,7 +291,12 @@ function askQuestion(callback) { //callback function
 					//var backgroundImage2 = new createjs.Bitmap(queue.getResult("backgroundImage2"));
 					//currentBackgroundImage = backgroundImage2;
 					//queueReload();
-					document.body.style.background = "url('assets/forest.jpg')";
+					if(numCoalsDestroyed === 3){
+						document.body.style.background = "url('assets/primary_succession.jpg')";
+					}
+					else{
+						document.body.style.background = "url('assets/forest.jpg')";
+					}
 					callback(); //calls callback function
 				}else { //Do Death
 					cleanup(); //runs the cleanup function and tells the game "GAME OVER!"
@@ -361,7 +366,9 @@ function tickEvent()
 	
 }
 
+function formatBackground(){
 
+}
 function handleMouseMove(event)
 {
     var cnvs = document.getElementById("myCanvas");
@@ -405,8 +412,8 @@ function handleMouseDown(event)
     	
         //Make it harder next time
         if(numCoalsDestroyed % 3 === 0){
-	    	enemyYSpeed *= 3;
-	    	enemyXSpeed *= 3;
+	    	enemyYSpeed *= 2;
+	    	enemyXSpeed *= 2;
 	    	
 	    	askQuestion(function() {
 	    		var timeToCreate = Math.floor((Math.random()*3500)+1);
