@@ -1,4 +1,4 @@
-# super-shock-bros
+# super coal shooter 2.0
 An alternative energy side-scroller
 
 ---
